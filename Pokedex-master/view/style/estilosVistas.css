@@ -1,0 +1,174 @@
+input, button {
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+}
+
+#crearPokemon {
+    width: 100%;
+    background-color: #ababab;
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+.imagenTabla {
+    height: 3rem;
+}
+
+#contenedorHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+#header {
+    width: 80%;
+}
+
+#user {
+    width: 20%;
+}
+
+#buscador {
+    width: 80%;
+}
+
+.tipoTabla {
+    height: 24px;
+}
+
+.imagenTabla {
+    width: 3.125rem;
+}
+
+#contenedorInfo {
+    margin-left: 7rem;
+    margin-right: 7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#imgVisualizacion {
+    height: 20rem;
+}
+
+#tipoNombre {
+    display: flex;
+}
+
+#imgTipo {
+    height: 2rem;
+    align-self: center;
+}
+
+/* Estilos para en tablet y celular */
+@media screen and (max-width: 1024px) {
+    input {
+        width: 90%;
+    }
+
+    #labelBuscador {
+        text-align: left;
+    }
+
+    #buscador {
+        width: 60%;
+    }
+
+    #buscar {
+        width: auto;
+    }
+
+    #userForm {
+        position: relative;
+        right: 5rem;
+    }
+
+    #imgTipo {
+        height: 1.8rem;
+    }
+
+    input {
+        padding: 8px;
+        border-radius: 40px;
+    }
+
+    .imagenTabla {
+        height: 2rem;
+        width: 2rem; /* Ajusta el ancho para mantener la proporción */
+    }
+}
+
+/* Estilos para el contenedor de header en celular */
+@media screen and (max-width: 600px) {
+    input {
+        width: 80%;
+    }
+
+    #userForm {
+        align-items: center;
+        max-width: fit-content;
+        align-self: end;
+        position: relative;
+        right: 2rem;
+    }
+
+    #labelBuscador {
+        text-align: left;
+    }
+
+    .inputsBuscar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #inputs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-self: center;
+    }
+
+    #buscar {
+        width: auto;
+    }
+
+    .tipoTabla {
+        height: .2rem;
+    }
+
+    .imagenTabla {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .titulo {
+        font-size: 1.4rem;
+    }
+
+    #tipoNombre {
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    #imgTipo {
+        align-self: center;
+        height: 1.2rem;
+    }
+
+    #contenedorInfo {
+        flex-wrap: wrap;
+    }
+
+
+    #imgVisualizacion {
+        height: 10rem;
+    }
+}
