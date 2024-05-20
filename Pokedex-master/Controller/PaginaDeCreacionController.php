@@ -27,41 +27,34 @@ class PaginaDeCreacionController
     {
 
         $pokemonData = $this->model->buscarPokemonId($id);
-       // var_dump($pokemonData );
+        // var_dump($pokemonData );
         $this->presenter->render("view/PaginaEdicionView.mustache", ["pokemonData" => $pokemonData]);
     }
 
     public function insertar()
     {
-
         $nombre = $_POST['nombre'];
         $numero = $_POST['numeroPokemon'];
         $descripcion = $_POST['descripcion'];
-        $tipos = isset($_POST['tipos']) ? $_POST['tipos'] : array();
-
-
-
+        $tipo = $_POST['tipoPokemon'];
 
         $directorio_destino = 'img/pokemon/';
+        $imagenP = null;
+        $imagenT = null;
 
         if (isset($_FILES['fotoPokemon'])) {
-            $archivo_nombre = $_FILES['fotoPokemon']['name'];
+            $imagenP = $_FILES['fotoPokemon']['name'];
             $archivo_temporal = $_FILES['fotoPokemon']['tmp_name'];
-            $archivo_tamaño = $_FILES['fotoPokemon']['size'];
-            $archivo_error = $_FILES['fotoPokemon']['error'];
-
-
-            $ruta_destino = $directorio_destino . $archivo_nombre;
-            move_uploaded_file($archivo_temporal, $ruta_destino);
+            move_uploaded_file($archivo_temporal, $directorio_destino . $imagenP);
         }
 
-
-        $pokemon_id = $this->model->insertarPokemon($archivo_nombre, $nombre, $numero, $descripcion);
-        foreach ($tipos as $tipo) {
-            $tipo_id = $this->model->obtenerIdTipo( $tipo);
-            $this->model->insertarTipoPokemon($pokemon_id, $tipo_id);
+        if (isset($_FILES['fotoTipo'])) {
+            $imagenT = $_FILES['fotoTipo']['name'];
+            $archivo_temporal = $_FILES['fotoTipo']['tmp_name'];
+            move_uploaded_file($archivo_temporal, $directorio_destino . $imagenT);
         }
 
+        $this->model->insertarPokemon($imagenP, $imagenT, $nombre, $numero, $descripcion, $tipo);
 
         header("Location: index.php");
         exit();

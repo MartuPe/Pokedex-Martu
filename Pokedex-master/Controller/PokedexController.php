@@ -1,4 +1,5 @@
 <?php
+
 class PokedexController
 {
     private $model;
@@ -31,16 +32,26 @@ class PokedexController
         $this->presenter->render("view/paginaPrincipalView.mustache", ["pokemonData" => $pokemonData]);
     }
 
-    public function buscarPokemon(){
+    public function mostrarBusqueda()
+    {
+        $this->presenter->render("view/buscarPokemonView.mustache", []);
+    }
+
+
+    public function buscarPokemon()
+    {
         if (isset($_POST['buscar'])) {
             $palabraBuscada = $_POST['buscar'];
             $pokemon = $this->model->buscarPokemon($palabraBuscada);
-            if($pokemon == null){
+            if (empty($pokemon)) {
                 $this->get();
-            }else{
-                $this->presenter->render("view/buscarPokemonView.mustache", ["pokemon" => $pokemon]);
+            } else {
+                $this->presenter->render("view/buscarPokemonView.mustache", ["pokemonData" => $pokemon]);
             }
+        } else {
+            $this->get(); // Si no hay búsqueda, muestra toda la lista
         }
     }
+
 
 }

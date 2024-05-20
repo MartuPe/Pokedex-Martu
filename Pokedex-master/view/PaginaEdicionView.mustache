@@ -19,10 +19,10 @@
 <form action="index.php?controller=PaginaDeCreacion&method=editarpokemon" method="post" enctype="multipart/form-data" class="w3-margin">
             {{#pokemonData}}
     <label for="fotoPokemon">Foto:</label>
-    <input type="file" name="fotoPokemon" id="fotoPokemon" value="img/pokemon/{{imagen}}"><br><br>
+    <input type="file" name="fotoPokemon" id="fotoPokemon" value="{{imagenPokemon}}"><br><br>
 
     {{#imagen}}
-    <img src="img/pokemon/{{imagen}}" alt="Imagen del Pokémon" id="imagenForm" style='height : 8rem'><br>
+    <img src="{{imagenPokemon}}" alt="Imagen del Pokémon" id="imagenForm" style='height : 8rem'><br>
     {{/imagen}}
 
     <label for="nombre">Nombre del pokémon:</label>
@@ -32,12 +32,9 @@
     <input type="number" id="numeroPokemon" name="numeroPokemon" value="{{numero}}"><br>
 
     <label>Tipo de pokémon</label><br>
-    {{#tipos_disponibles}}
     <label>
-        <input type="checkbox" name="tipos[]" value="{{tipo}}" {{#checked}}checked{{/checked}}>
-        {{tipo}}
+        <input type="text" name="tipoPokemon" id="tipoPokemon" value="{{tipoPokemon}}"><br>
     </label><br>
-    {{/tipos_disponibles}}
 
     <label for="descripcion">Una breve descripción:</label><br>
     <textarea name="descripcion" id="descripcion" cols="20" rows="3">{{descripcion}}</textarea><br>

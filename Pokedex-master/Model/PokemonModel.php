@@ -16,7 +16,8 @@ class PokemonModel
 
     }
 
-    public function buscarPokemon($palabraBuscada = ""){
+    public function buscarPokemon($palabraBuscada = "")
+    {
         $sql = "SELECT * FROM apipokemon WHERE tipo = '$palabraBuscada'  OR 
                 nombre = '$palabraBuscada' OR numero = '$palabraBuscada'";
 
@@ -24,15 +25,16 @@ class PokemonModel
     }
 
 
-public function buscarPokemonId($id)
-{
-    $sql = "SELECT * FROM apipokemon WHERE id = '$id'";
+    public function buscarPokemonId($id)
+    {
+        $sql = "SELECT * FROM apipokemon WHERE id = '$id'";
 
-    return $this->database->query($sql);
+        return $this->database->query($sql);
 
-}
+    }
 
-    public function obtenerIdTipo($tipo) {
+    public function obtenerIdTipo($tipo)
+    {
 
         $sql = "SELECT id FROM tipo WHERE nombre = ?";
         $stmt = $this->database->prepare($sql);
@@ -45,18 +47,19 @@ public function buscarPokemonId($id)
         return $row ? $row['id'] : null; // Devuelve el ID del tipo o null si no se encuentra
     }
 
-    public function insertarPokemon($imagen, $nombre, $numero, $descripcion) {
-        $sql = "INSERT INTO apipokemon (imagen, nombre, numero, descripcion)
-                VALUES ('$imagen', '$nombre', $numero, '$descripcion')";
+    public function insertarPokemon($imagenPokemon, $imagenTipo, $nombre, $numero, $descripcion, $tipo)
+    {
+        $sql = "INSERT INTO apipokemon (imagenPokemon, imagenTipo, nombre, numero, descripcion, tipo)
+                VALUES ('$imagenPokemon', '$imagenTipo', '$nombre', $numero, '$descripcion', '$tipo')";
 
         $this->database->execute($sql);
-
 
 
     }
 
 
-    public function insertarTipoPokemon($pokemon_id, $tipo_id) {
+    public function insertarTipoPokemon($pokemon_id, $tipo_id)
+    {
         $pokemon_id = intval($pokemon_id); // Asegurarse de que $pokemon_id sea un entero
         $tipo_id = intval($tipo_id); // Asegurarse de que $tipo_id sea un entero
 
@@ -67,13 +70,15 @@ public function buscarPokemonId($id)
         $this->database->execute($sql);
     }
 
-    public function eliminarPokemon($id_a_eliminar) {
+    public function eliminarPokemon($id_a_eliminar)
+    {
 
-         $sql = "DELETE FROM apipokemon WHERE id = '$id_a_eliminar'";
-         $this->database->execute($sql);
+        $sql = "DELETE FROM apipokemon WHERE id = '$id_a_eliminar'";
+        $this->database->execute($sql);
 
     }
-public function obtenerTiposDisponibles()
+
+    public function obtenerTiposDisponibles()
     {
         $sql = "SELECT nombre FROM tipo";
         return $this->database->query($sql);
