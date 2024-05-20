@@ -25,7 +25,7 @@ if (isset($_POST["usuario"]) && isset($_POST["password"])) {
 
 // Función para consultar en la base de datos
 function consultarBD($usuario, $password) {
-    $conn = new mysqli("localhost", "root", "", "test");
+    $conn = new mysqli("localhost", "root", "", "pokedex");
 
     // Verificar la conexión
     if ($conn->connect_error) {
@@ -33,7 +33,7 @@ function consultarBD($usuario, $password) {
     }
 
     // Consulta para verificar usuario y contraseña
-    $sql = "SELECT * FROM login WHERE usuario = '$usuario' AND password = '$password'";
+    $sql = "SELECT * FROM login WHERE nombreUsuario = '$usuario' AND passUsuario = '$password'";
     $result = $conn->query($sql);
 
     // Si se encuentra un resultado, es válido

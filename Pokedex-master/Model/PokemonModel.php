@@ -47,7 +47,7 @@ public function buscarPokemonId($id)
     }
 
     public function insertarPokemon($imagen, $nombre, $numero, $descripcion) {
-        $sql = "INSERT INTO pokemon (imagen, nombre, numero, descripcion)
+        $sql = "INSERT INTO apipokemon (imagen, nombre, numero, descripcion)
                 VALUES ('$imagen', '$nombre', $numero, '$descripcion')";
 
         $this->database->execute($sql);
