@@ -16,13 +16,12 @@ class PokemonModel
 
     }
 
-    public function searchPokemon($palabraBuscada = "")
-{
-    $sql = "SELECT * FROM apipokemon WHERE tipo = '$palabraBuscada'  OR 
+    public function buscarPokemon($palabraBuscada = ""){
+        $sql = "SELECT * FROM apipokemon WHERE tipo = '$palabraBuscada'  OR 
                 nombre = '$palabraBuscada' OR numero = '$palabraBuscada'";
 
-    return $this->database->query($sql);
-}
+        return $this->database->query($sql);
+    }
 
 
 public function buscarPokemonId($id)
