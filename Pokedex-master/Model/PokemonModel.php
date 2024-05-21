@@ -84,4 +84,10 @@ class PokemonModel
         return $this->database->query($sql);
     }
 
+    public function usuarioLogeado($usuario, $password)
+    {
+        return $this->database->query("SELECT * FROM `login` WHERE nombreUsuario = '$usuario' AND passUsuario = '$password'");
+
+    }
+
 }
